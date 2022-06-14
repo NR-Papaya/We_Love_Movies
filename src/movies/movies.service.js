@@ -1,7 +1,8 @@
 const knex = require("../db/connection");
 const mapProperties = require("../utils/map-properties");
 
-//-----HELPER FUNCTIONS-----
+//------------HELPER FUNCTIONS-------------
+
 const addCritic = mapProperties({
 	"c:critic_id": "critic.critic_id",
 	preferred_name: "critic.preferred_name",
@@ -11,11 +12,14 @@ const addCritic = mapProperties({
 	"c:updated": "critic.updated_at",
 });
 
-//-----LIST-----
+//-------------CRUD FUNCTIONS-------------
+
+//lists all movies
 function list() {
 	return knex("movies").select("*");
 }
 
+//lists all movies which are showing in theaters
 function listShowing() {
 	return knex("movies as m")
 		.join("movies_theaters as mt", "mt.movie_id", "m.movie_id")
@@ -23,11 +27,13 @@ function listShowing() {
 		.where("mt.is_showing", true)
 		.groupBy("m.movie_id");
 }
-//-----READ-----
+
+//find a specific movie based on the movieId
 function read(movieId) {
 	return knex("movies").select("*").where("movie_id", movieId).first();
 }
 
+//provides a list of theaters which are showing the given movie based on the movieId
 function readTheatersWithMovie(movieId) {
 	return knex("theaters as t")
 		.join("movies_theaters as mt", "mt.theater_id", "t.theater_id")
@@ -37,9 +43,10 @@ function readTheatersWithMovie(movieId) {
 		.groupBy("mt.is_showing", "t.theater_id", "mt.movie_id");
 }
 
+//provides a list of reviews for the given movie with the critic attached
 function readMovieReviews(movieId) {
 	return knex("reviews as r")
-		.Join("critics as c", "c.critic_id", "r.critic_id")
+		.join("critics as c", "c.critic_id", "r.critic_id")
 		.select(
 			"r.*",
 			"c.critic_id as c:critic_id",
