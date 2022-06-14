@@ -1,9 +1,10 @@
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const service = require("./theaters.service");
 
-//------------MIDDLEWARE FUNCTIONS------------------
 
 //------------CRUD FUNCTIONS------------------
+
+//lists all theaters with movies currently showing
 async function list(req,res){
     const response = await service.list();
     res.json({data: response});

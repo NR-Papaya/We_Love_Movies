@@ -1,5 +1,5 @@
-const service = require("./movies.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
+const service = require("./movies.service");
 
 //------------MIDDLEWARE FUNCTIONS------------------
 
