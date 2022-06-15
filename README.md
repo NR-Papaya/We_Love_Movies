@@ -29,7 +29,7 @@ You've been hired on as a backend developer at a new startup called WeLoveMovies
 
 ## Objectives :
 
-This project is designed to test the ability to build complex servers and access data through a database. To succeed at this project, you'll need to demonstrate that you can do the following:
+This project is designed to test the ability to build complex servers and access data through a database. Demonstrating the following:
 
 -   Install and use common middleware packages
 
@@ -55,4 +55,3 @@ This project is designed to test the ability to build complex servers and access
 
 -   Deploy your backend server to a cloud service
 
-###
