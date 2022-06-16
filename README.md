@@ -4,8 +4,6 @@
 
 [Front-End](https://secure-plateau-03890.herokuapp.com/)
 
-[Back-End](https://limitless-mesa-68563.herokuapp.com/)
-
 #### API End Points :
 GET
 
